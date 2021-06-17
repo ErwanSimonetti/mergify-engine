@@ -441,30 +441,50 @@ details.</p></td>
 <td><p>string</p></td>
 <td><p>The title of the pull request.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">current-time</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">created-at</span></code></p></td>
+<td><p><a class="reference internal" href="../configuration/#iso-datetime"><span class="std std-ref">Datetime</span></a></p></td>
+<td><p>The time the pull request was created at.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">updated-at</span></code></p></td>
+<td><p><a class="reference internal" href="../configuration/#iso-datetime"><span class="std std-ref">Datetime</span></a></p></td>
+<td><p>The time the pull request was updated at.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">merged-at</span></code></p></td>
+<td><p><a class="reference internal" href="../configuration/#iso-datetime"><span class="std std-ref">Datetime</span></a></p></td>
+<td><p>The time the pull request was merged at.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">closed-at</span></code></p></td>
+<td><p><a class="reference internal" href="../configuration/#iso-datetime"><span class="std std-ref">Datetime</span></a></p></td>
+<td><p>The time the pull request was closed at.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">current-datetime</span></code></p></td>
+<td><p><a class="reference internal" href="../configuration/#iso-datetime"><span class="std std-ref">Datetime</span></a></p></td>
+<td><p>The current date and time.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">current-time</span></code></p></td>
 <td><p>string</p></td>
 <td><p>The current time in format <code class="docutils literal notranslate"><span class="pre">HH:MM</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">current-day</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">current-day</span></code></p></td>
 <td><p>integer</p></td>
 <td><p>The current day of the month, from 1 to 31.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">current-month</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">current-month</span></code></p></td>
 <td><p>integer</p></td>
 <td><p>The current month, from 1 to 12.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">current-year</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">current-year</span></code></p></td>
 <td><p>integer</p></td>
 <td><p>The current year, from 1900 to 9999.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">current-day-of-week</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">current-day-of-week</span></code></p></td>
 <td><p>integer or string</p></td>
 <td><p>The current day of the week. From 1 (Monday) to 7 (Sunday), or one of
 <code class="docutils literal notranslate"><span class="pre">Mon</span></code>, <code class="docutils literal notranslate"><span class="pre">Tue</span></code>, <code class="docutils literal notranslate"><span class="pre">Wed</span></code>, <code class="docutils literal notranslate"><span class="pre">Thu</span></code>, <code class="docutils literal notranslate"><span class="pre">Fri</span></code>, <code class="docutils literal notranslate"><span class="pre">Sat</span></code>, <code class="docutils literal notranslate"><span class="pre">Sun</span></code>
 <code class="docutils literal notranslate"><span class="pre">Monday</span></code>, <code class="docutils literal notranslate"><span class="pre">Tuesday</span></code>, <code class="docutils literal notranslate"><span class="pre">Wednesday</span></code>, <code class="docutils literal notranslate"><span class="pre">Thursday</span></code>, <code class="docutils literal notranslate"><span class="pre">Friday</span></code>,
 <code class="docutils literal notranslate"><span class="pre">Saturday</span></code>, <code class="docutils literal notranslate"><span class="pre">Sunday</span></code>. Weeks start on Monday.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">schedule</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">schedule</span></code></p></td>
 <td><p>string</p></td>
 <td><p>A schedule, e.g., <code class="docutils literal notranslate"><span class="pre">Mon-Fri</span></code>, <code class="docutils literal notranslate"><span class="pre">12:00-18:00</span></code> or <code class="docutils literal notranslate"><span class="pre">Mon-Fri</span> <span class="pre">12:00-18:00</span></code></p></td>
 </tr>
@@ -475,7 +495,9 @@ details.</p></td>
 <p>Time-based conditions have a 5 minutes precision at best. Do not write
 conditions based on time ranges that are too narrow or the condition might
 never be true.</p>
-<p><code class="docutils literal notranslate"><span class="pre">current-time</span></code> does not support <code class="docutils literal notranslate"><span class="pre">~=</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code> operators.
+<p><code class="docutils literal notranslate"><span class="pre">current-datetime</span></code>, <code class="docutils literal notranslate"><span class="pre">current-time</span></code>, <code class="docutils literal notranslate"><span class="pre">created-at</span></code>, <code class="docutils literal notranslate"><span class="pre">updated-at</span></code>,
+<code class="docutils literal notranslate"><span class="pre">closed-at</span></code> and <code class="docutils literal notranslate"><span class="pre">merged-at</span></code> do not support <code class="docutils literal notranslate"><span class="pre">~=</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code>
+operators.
 <code class="docutils literal notranslate"><span class="pre">schedule</span></code> only supports <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code>.</p>
 <p>The timezone for all time-based conditions is UTC.</p>
 </div>

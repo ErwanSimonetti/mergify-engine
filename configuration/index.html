@@ -341,13 +341,37 @@ your <a class="reference internal" href="../conditions/#conditions"><span class=
 </div>
 </section>
 </section>
+<section id="datetime">
+<span id="iso-datetime"></span><h3>Datetime<a class="headerlink" href="#datetime" title="Permalink to this headline">🔗</a></h3>
+<p>The date and datetime format must follow the ISO 8601 standard. If timezone is missing, it’s assumed to be UTC.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2021</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">05</span>
+<span class="mi">2012</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">17</span><span class="n">T22</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">51</span>
+<span class="mi">2008</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">22</span><span class="n">T14</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">54</span><span class="n">Z</span>
+<span class="mi">2013</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span><span class="n">T07</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">04</span><span class="o">-</span><span class="mi">08</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<section id="id2">
+<h4>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">🔗</a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">end of life version 10.0</span>
+  <span class="nt">conditions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">base=stable/10.0</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-closed</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">current-datetime&gt;=2021-04-05</span>
+  <span class="nt">actions</span><span class="p">:</span>
+    <span class="nt">close</span><span class="p">:</span>
+      <span class="nt">message</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">The pull request base branch has reached end-of-life.</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="disabling-rules">
 <h3>Disabling Rules<a class="headerlink" href="#disabling-rules" title="Permalink to this headline">🔗</a></h3>
 <p>You can disable a rule while keeping it in the configuration. This allows
 gracefully handling the cancellation of any ongoing actions (e.g., like stopping
 the merge queue).</p>
-<section id="id2">
-<h4>Examples<a class="headerlink" href="#id2" title="Permalink to this headline">🔗</a></h4>
+<section id="id3">
+<h4>Examples<a class="headerlink" href="#id3" title="Permalink to this headline">🔗</a></h4>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for main when the title does not contain “WIP” (ignoring case)</span>
   <span class="nt">disabled</span><span class="p">:</span>
     <span class="nt">reason</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">code freeze</span>
