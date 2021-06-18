@@ -192,17 +192,6 @@ applied. Conditions must be listed under the <code class="docutils literal notra
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="s2">&quot;-&quot;</span> <span class="p">]</span> <span class="p">[</span> <span class="s2">&quot;#&quot;</span> <span class="p">]</span> <span class="o">&lt;</span><span class="n">attribute</span><span class="o">&gt;</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">operator</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">]</span>
 </pre></div>
 </div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> character is considered as a comment delimiter in YAML. As <code class="docutils literal notranslate"><span class="pre">#</span></code>
-is the length operator in Mergify’s conditions system, don’t forget to use
-<code class="docutils literal notranslate"><span class="pre">&quot;</span></code> around the condition to write valid YAML syntax.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">operator</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> are only optional if the <code class="docutils literal notranslate"><span class="pre">attribute</span></code> type is
-<code class="docutils literal notranslate"><span class="pre">Boolean</span></code>.</p>
-</div>
 <ul class="simple">
 <li><p>The optional <code class="docutils literal notranslate"><span class="pre">-</span></code> prefix is equivalent to the <cite>not</cite> operator.</p></li>
 <li><p>The optional <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix indicates to consider the length of the attribute
@@ -224,6 +213,17 @@ of contributors who approved the pull request.</p></li>
 pull request.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-merged</span></code> matches if the pull requested has not been merged.</p></li>
 </ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> character is considered as a comment delimiter in YAML. As <code class="docutils literal notranslate"><span class="pre">#</span></code>
+is the length operator in Mergify’s conditions system, don’t forget to use
+<code class="docutils literal notranslate"><span class="pre">&quot;</span></code> around the condition to write valid YAML syntax.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">operator</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> are only optional if the <code class="docutils literal notranslate"><span class="pre">attribute</span></code> type is
+<code class="docutils literal notranslate"><span class="pre">Boolean</span></code>.</p>
+</div>
 </section>
 <section id="combining-conditions-with-operators">
 <h2>Combining Conditions with Operators<a class="headerlink" href="#combining-conditions-with-operators" title="Permalink to this headline">🔗</a></h2>
@@ -247,9 +247,9 @@ pull request.</p></li>
         <span class="l l-Scalar l-Scalar-Plain">label=backend</span>
 </pre></div>
 </div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The number of nested conditions is limited to 3.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The depth on combined conditions is limited to 3.</p>
 </div>
 </section>
 <section id="attributes">
@@ -490,15 +490,20 @@ details.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>Time-based conditions have a 5 minutes precision at best. Do not write
 conditions based on time ranges that are too narrow or the condition might
 never be true.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">current-datetime</span></code>, <code class="docutils literal notranslate"><span class="pre">current-time</span></code>, <code class="docutils literal notranslate"><span class="pre">created-at</span></code>, <code class="docutils literal notranslate"><span class="pre">updated-at</span></code>,
-<code class="docutils literal notranslate"><span class="pre">closed-at</span></code> and <code class="docutils literal notranslate"><span class="pre">merged-at</span></code> do not support <code class="docutils literal notranslate"><span class="pre">~=</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code>
-operators.
-<code class="docutils literal notranslate"><span class="pre">schedule</span></code> only supports <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">closed-at</span></code> and <code class="docutils literal notranslate"><span class="pre">merged-at</span></code> do not support the <code class="docutils literal notranslate"><span class="pre">~=</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code>
+operators. <code class="docutils literal notranslate"><span class="pre">schedule</span></code> only supports the <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code> operators.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>The timezone for all time-based conditions is UTC.</p>
 </div>
 </section>
