@@ -46,15 +46,15 @@
     <link rel="prev" title="queue" href="../queue/" /> 
   </head><body>
 <div class="body-container">
-  <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white flex-wrap">
+  <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white">
   <a class="navbar-brand" href="../../">
     <img class="logo" src="../../_static/mergify-logo-horizontal.png" alt="Mergify"/>
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-navbar">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#top-navbar">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="navbar-collapse collapse" id="top-navbar">
-    <ul class="navbar-nav justify-content-end ml-auto">
+  <div class="collapse navbar-collapse justify-content-end" id="top-navbar">
+    <ul class="navbar-nav ms-auto">
       <li class="nav-item">
         <a class="nav-link" href="https://mergify.io" target="_blank">Home</a>
       </li>
@@ -74,12 +74,15 @@
         <a class="nav-link" href="https://status.mergify.io" target="_blank">Status</a>
       </li>
     </ul>
-    <div class="dropdown-divider d-block d-sm-none mb-4"></div>
-    <form class="form-inline justify-content-end" action="../../search/" method="get">
-      <input type="text" name="q" class="form-control mr-sm-2"/>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    <form class="row row-cols-lg-auto" action="../../search/" method="get">
+      <div class="col-8-lg">
+        <input type="text" name="q" class="form-control mr-sm-2"/>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </div>
+      <div class="col-4-lg">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </div>
     </form>
   </div>
 </nav>
@@ -105,7 +108,7 @@
 </nav>
   <div class="main container-fluid">
     <div class="row">
-      <div class="sphinxsidebar col-12 col-lg-4 col-xl-3" aria-label="main navigation"><ul class="current">
+      <div class="sphinxsidebar col" aria-label="main navigation"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">➡️ Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting-started/#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting-started/#configuration">Configuration</a></li>
@@ -183,9 +186,8 @@
       </div>
       <div class="document col-12 col-lg-8 col-xl-9">
       <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+        <div class="body" role="main">
+          
   <section id="rebase">
 <span id="rebase-action"></span><h1>rebase<a class="headerlink" href="#rebase" title="Permalink to this headline">🔗</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">rebase</span></code> action will rebase the pull request against its base branch. To
@@ -193,8 +195,8 @@ this effect, it clones the branch, run <cite>git rebase</cite> locally and push 
 result to the GitHub repository.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
-<div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-success">Essential Plan<br/>Feature 💪</span></a></div>
+<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div>
+<div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-success">Essential Plan<br/>Feature 💪</span></a></div>
 If the repository is bigger than 512 MB, the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> action is only
 available for <a class="reference external" href="https://mergify.io/pricing">Essential and Premium Plan subscribers</a>.</p>
 </div>
@@ -218,7 +220,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Es
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bot_account</span></code></p></td>
 <td><p><a class="reference internal" href="../../configuration/#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td></td>
-<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
+<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div>
 For certain actions, such as rebasing branches, Mergify has to
 impersonate a GitHub user. You can specify the account to use with this
 option. If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify picks randomly one of the
@@ -231,7 +233,6 @@ logged in Mergify dashboard once.</p></td>
 </section>
 
 
-          </div>
         </div>
       </div>
     </div>

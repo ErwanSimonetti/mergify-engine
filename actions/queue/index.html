@@ -46,15 +46,15 @@
     <link rel="prev" title="post_check" href="../post_check/" /> 
   </head><body>
 <div class="body-container">
-  <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white flex-wrap">
+  <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white">
   <a class="navbar-brand" href="../../">
     <img class="logo" src="../../_static/mergify-logo-horizontal.png" alt="Mergify"/>
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-navbar">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#top-navbar">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="navbar-collapse collapse" id="top-navbar">
-    <ul class="navbar-nav justify-content-end ml-auto">
+  <div class="collapse navbar-collapse justify-content-end" id="top-navbar">
+    <ul class="navbar-nav ms-auto">
       <li class="nav-item">
         <a class="nav-link" href="https://mergify.io" target="_blank">Home</a>
       </li>
@@ -74,12 +74,15 @@
         <a class="nav-link" href="https://status.mergify.io" target="_blank">Status</a>
       </li>
     </ul>
-    <div class="dropdown-divider d-block d-sm-none mb-4"></div>
-    <form class="form-inline justify-content-end" action="../../search/" method="get">
-      <input type="text" name="q" class="form-control mr-sm-2"/>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    <form class="row row-cols-lg-auto" action="../../search/" method="get">
+      <div class="col-8-lg">
+        <input type="text" name="q" class="form-control mr-sm-2"/>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </div>
+      <div class="col-4-lg">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </div>
     </form>
   </div>
 </nav>
@@ -105,7 +108,7 @@
 </nav>
   <div class="main container-fluid">
     <div class="row">
-      <div class="sphinxsidebar col-12 col-lg-4 col-xl-3" aria-label="main navigation"><ul class="current">
+      <div class="sphinxsidebar col" aria-label="main navigation"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting-started/">➡️ Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../getting-started/#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../getting-started/#configuration">Configuration</a></li>
@@ -183,9 +186,8 @@
       </div>
       <div class="document col-12 col-lg-8 col-xl-9">
       <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+        <div class="body" role="main">
+          
   <section id="queue">
 <span id="queue-action"></span><h1>queue<a class="headerlink" href="#queue" title="Permalink to this headline">🔗</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">queue</span></code> action moves the pull request into one of the merge queue defined
@@ -274,7 +276,7 @@ until all preceding queues are empty.</p>
 </section>
 <section id="speculative-checks">
 <span id="id1"></span><h2>Speculative Checks<a class="headerlink" href="#speculative-checks" title="Permalink to this headline">🔗</a></h2>
-<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div></p>
+<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div></p>
 <p>Merging pull requests one by one serially can take a lot of time, depending on
 the continuous integration run time. To merge pull requests faster, Mergify
 queues support <cite>speculative checks</cite>.</p>
@@ -354,7 +356,7 @@ report an error if rebase is not possible.</p></td>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">merge_bot_account</span></code></p></td>
 <td><p>string</p></td>
 <td></td>
-<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
+<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div>
 Mergify can impersonate a GitHub user to merge pull request.
 If no <code class="docutils literal notranslate"><span class="pre">merge_bot_account</span></code> is set, Mergify will merge the pull request
 itself. The user account <strong>must</strong> have already been
@@ -363,7 +365,7 @@ logged in Mergify dashboard once and have <strong>write</strong> or <strong>main
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">priority</span></code></p></td>
 <td><p>1 &lt;= integer &lt;= 10000 or <code class="docutils literal notranslate"><span class="pre">low</span></code> or <code class="docutils literal notranslate"><span class="pre">medium</span></code> or <code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></td>
-<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div> This sets the priority of the pull request in the queue. The pull
+<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div> This sets the priority of the pull request in the queue. The pull
 request with the highest priority is merged first.
 <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">medium</span></code>, <code class="docutils literal notranslate"><span class="pre">high</span></code> are aliases for <code class="docutils literal notranslate"><span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">2000</span></code>, <code class="docutils literal notranslate"><span class="pre">3000</span></code>.</p></td>
 </tr>
@@ -415,7 +417,7 @@ end of the title.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">speculative_checks</span></code></p></td>
 <td><p>int</p></td>
 <td><p>1</p></td>
-<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div> The maximum number of checks to run in parallel in the queue. Must be
+<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div> The maximum number of checks to run in parallel in the queue. Must be
 between 1 and 20.
 See <a class="reference internal" href="#speculative-checks"><span class="std std-ref">Speculative Checks</span></a>.</p></td>
 </tr>
@@ -423,7 +425,7 @@ See <a class="reference internal" href="#speculative-checks"><span class="std st
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
+<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div>
 Defining multiple queue rules is only available for <a class="reference external" href="https://mergify.io/pricing">Premium subscribers</a>.</p>
 </div>
 </section>
@@ -457,7 +459,7 @@ in the queue, it will be updated with the latest commit of its base branch.</p>
 </section>
 <section id="multiple-queues">
 <h3>🚥 Multiple Queues<a class="headerlink" href="#multiple-queues" title="Permalink to this headline">🔗</a></h3>
-<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div></p>
+<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div></p>
 <p>By using multiple queues, it's possible to put some pull requests in a higher
 priority queue. As queues are processed one after the other, the following
 example allow to add a label <code class="docutils literal notranslate"><span class="pre">urgent</span></code> to a pull request so it gets put in the
@@ -500,7 +502,7 @@ pass and then merge the pull request.</p>
 </section>
 <section id="id4">
 <h3>🎲 Speculative Checks<a class="headerlink" href="#id4" title="Permalink to this headline">🔗</a></h3>
-<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div></p>
+<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div></p>
 <p>If your continuous integration system takes a long time to validate the
 enqueued pull requests, it might be interesting to enable <a class="reference internal" href="#speculative-checks"><span class="std std-ref">speculative
 checks</span></a>. This will allow Mergify to trigger multiple runs
@@ -529,8 +531,8 @@ three enqueued pull requests are mergeable.</p>
 </section>
 <section id="defining-pull-request-dependencies">
 <span id="merge-depends-on"></span><h2>⛓️ Defining Pull Request Dependencies<a class="headerlink" href="#defining-pull-request-dependencies" title="Permalink to this headline">🔗</a></h2>
-<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan<br/>Feature 🦾</span></a></div>
-<div class="feature-tag"><span class="badge badge-primary">Open Source<br /> Feature 💖</span></div></p>
+<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div>
+<div class="feature-tag"><span class="badge bg-primary">Open Source<br /> Feature 💖</span></div></p>
 <p>You can specify dependencies between pull requests from the same repository.
 Mergify waits for the linked pull requests to be merged before merging any pull
 request with a <code class="docutils literal notranslate"><span class="pre">Depends-On:</span></code> header.</p>
@@ -552,7 +554,6 @@ Depends-On: https://github.com/organization/repository/pull/123
 </section>
 
 
-          </div>
         </div>
       </div>
     </div>

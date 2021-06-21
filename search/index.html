@@ -45,15 +45,15 @@
 
   </head><body>
 <div class="body-container">
-  <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white flex-wrap">
+  <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white">
   <a class="navbar-brand" href="../">
     <img class="logo" src="../_static/mergify-logo-horizontal.png" alt="Mergify"/>
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#top-navbar">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#top-navbar">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="navbar-collapse collapse" id="top-navbar">
-    <ul class="navbar-nav justify-content-end ml-auto">
+  <div class="collapse navbar-collapse justify-content-end" id="top-navbar">
+    <ul class="navbar-nav ms-auto">
       <li class="nav-item">
         <a class="nav-link" href="https://mergify.io" target="_blank">Home</a>
       </li>
@@ -73,12 +73,15 @@
         <a class="nav-link" href="https://status.mergify.io" target="_blank">Status</a>
       </li>
     </ul>
-    <div class="dropdown-divider d-block d-sm-none mb-4"></div>
-    <form class="form-inline justify-content-end" action="#" method="get">
-      <input type="text" name="q" class="form-control mr-sm-2"/>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    <form class="row row-cols-lg-auto" action="#" method="get">
+      <div class="col-8-lg">
+        <input type="text" name="q" class="form-control mr-sm-2"/>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </div>
+      <div class="col-4-lg">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </div>
     </form>
   </div>
 </nav>
@@ -93,7 +96,7 @@
 </nav>
   <div class="main container-fluid">
     <div class="row">
-      <div class="sphinxsidebar col-12 col-lg-4 col-xl-3" aria-label="main navigation"><ul>
+      <div class="sphinxsidebar col" aria-label="main navigation"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/">➡️ Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../getting-started/#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../getting-started/#configuration">Configuration</a></li>
@@ -171,9 +174,8 @@
       </div>
       <div class="document col-12 col-lg-8 col-xl-9">
       <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+        <div class="body" role="main">
+          
   <div id="fallback" class="admonition warning">
   <script type="text/javascript">$('#fallback').hide();</script>
   <p>
@@ -186,7 +188,6 @@
   
   </div>
 
-          </div>
         </div>
       </div>
     </div>
