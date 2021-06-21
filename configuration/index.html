@@ -344,9 +344,10 @@ regular expressions.</p>
 </div>
 </section>
 </section>
-<section id="datetime">
-<span id="iso-datetime"></span><h3>Datetime<a class="headerlink" href="#datetime" title="Permalink to this headline">🔗</a></h3>
-<p>The date and datetime format must follow the ISO 8601 standard. If timezone is missing, it’s assumed to be UTC.</p>
+<section id="timestamp">
+<span id="iso-timestamp"></span><h3>Timestamp<a class="headerlink" href="#timestamp" title="Permalink to this headline">🔗</a></h3>
+<p>The timestamp format must follow the <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 standard</a>. If the timezone is missing, the
+timestamp is assumed to be in UTC.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2021</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">05</span>
 <span class="mi">2012</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">17</span><span class="n">T22</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">51</span>
 <span class="mi">2008</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">22</span><span class="n">T14</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">54</span><span class="n">Z</span>
@@ -368,13 +369,38 @@ regular expressions.</p>
 </div>
 </section>
 </section>
+<section id="relative-timestamp">
+<span id="id3"></span><h3>Relative Timestamp<a class="headerlink" href="#relative-timestamp" title="Permalink to this headline">🔗</a></h3>
+<p>Timestamps can be expressed relative to the current date and time.
+The format is <code class="docutils literal notranslate"><span class="pre">[DD</span> <span class="pre">days]</span> <span class="pre">[HH:MM]</span> <span class="pre">ago</span></code>:</p>
+<ul class="simple">
+<li><p>DD, the number of days</p></li>
+<li><p>HH, the number of hours</p></li>
+<li><p>MM, the number of minutes</p></li>
+</ul>
+<p>If the current date is 18th June 2020, <code class="docutils literal notranslate"><span class="pre">updated-at&gt;=14</span> <span class="pre">days</span> <span class="pre">ago</span></code> will be translated <code class="docutils literal notranslate"><span class="pre">updated-at&gt;=2020-06-04T00:00:00</span></code>.</p>
+<section id="id4">
+<h4>Examples<a class="headerlink" href="#id4" title="Permalink to this headline">🔗</a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">close stale pull request</span>
+  <span class="nt">conditions</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">base=main</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-closed</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">updated-at&lt;14 days ago</span>
+  <span class="nt">actions</span><span class="p">:</span>
+    <span class="nt">close</span><span class="p">:</span>
+      <span class="nt">message</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">This pull request looks stale. Feel free to reopen it if you think it&#39;s a mistake.</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="disabling-rules">
 <h3>Disabling Rules<a class="headerlink" href="#disabling-rules" title="Permalink to this headline">🔗</a></h3>
 <p>You can disable a rule while keeping it in the configuration. This allows
 gracefully handling the cancellation of any ongoing actions (e.g., like stopping
 the merge queue).</p>
-<section id="id3">
-<h4>Examples<a class="headerlink" href="#id3" title="Permalink to this headline">🔗</a></h4>
+<section id="id5">
+<h4>Examples<a class="headerlink" href="#id5" title="Permalink to this headline">🔗</a></h4>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for main when the title does not contain “WIP” (ignoring case)</span>
   <span class="nt">disabled</span><span class="p">:</span>
     <span class="nt">reason</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">code freeze</span>
