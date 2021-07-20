@@ -5,14 +5,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<meta content="Mergify Documentation for Request Review Action" name="description" />
-<meta content="mergify, request, review, pull request" name="keywords" />
-<meta content="Request review from users or teams for a pull request." name="summary" />
-<meta content="binoculars" name="doc:icon" />
+<meta content="Mergify Documentation for Squash Action" name="description" />
+<meta content="mergify, squash, pull request" name="keywords" />
+<meta content="Squash a pull request." name="summary" />
+<meta content="compress-arrows-alt" name="doc:icon" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>request_reviews &#8212; Mergify  documentation</title>
+    <title>squash &#8212; Mergify  documentation</title>
 
   <link rel="stylesheet" href="../../_bootstrap/bootstrap.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
@@ -43,8 +43,8 @@
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="review" href="../review/" />
-    <link rel="prev" title="rebase" href="../rebase/" /> 
+    <link rel="next" title="⚙️ Commands" href="../../commands/" />
+    <link rel="prev" title="update" href="../update/" /> 
   </head><body>
 <div class="body-container">
   <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white">
@@ -94,15 +94,15 @@
                                    accesskey="U"
                                    class="active"
                                    >🚀 Actions</a></li>
-    <li class="breadcrumb-item active">request_reviews</li>
+    <li class="breadcrumb-item active">squash</li>
   </ol>
   <div>
     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-      <a href="../rebase/" title="Previous Chapter: rebase" class="btn btn-primary" role="button" accesskey="P">
-        &laquo; rebase
+      <a href="../update/" title="Previous Chapter: update" class="btn btn-primary" role="button" accesskey="P">
+        &laquo; update
       </a>
-      <a href="../review/" title="Next Chapter: review" class="btn btn-primary" role="button" accesskey="N">
-        review &raquo;
+      <a href="../../commands/" title="Next Chapter: ⚙️ Commands" class="btn btn-primary" role="button" accesskey="N">
+        ⚙️ Commands &raquo;
       </a>
     </div>
   </div>
@@ -146,10 +146,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../post_check/">post_check</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../queue/">queue</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rebase/">rebase</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">request_reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../request_reviews/">request_reviews</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../review/">review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../update/">update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../squash/">squash</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">squash</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../commands/">⚙️ Commands</a><ul>
@@ -191,22 +191,17 @@
       <div class="documentwrapper">
         <div class="body" role="main">
           
-  <section id="request-reviews">
-<span id="request-reviews-action"></span><h1>request_reviews<a class="headerlink" href="#request-reviews" title="Permalink to this headline">🔗</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>GitHub does not allow to request more than 15 users or teams for a review.</p>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">request_reviews</span></code> action requests reviews from users for the pull
-request.</p>
+  <section id="squash">
+<span id="squash-action"></span><h1>squash<a class="headerlink" href="#squash" title="Permalink to this headline">🔗</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">squash</span></code> action transforms pull request's n-commits into a single commit.</p>
 <section id="options">
 <h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">🔗</a></h2>
 <table class="colwidths-given docutils align-default">
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 40%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 50%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key Name</p></th>
@@ -216,99 +211,31 @@ request.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">users</span></code></p></td>
-<td><p>list of string or dictionary of login and weight</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bot_account</span></code></p></td>
+<td><p><a class="reference internal" href="../../configuration/#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td></td>
-<td><p>The username to request reviews from.</p></td>
+<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div>
+Mergify can impersonate a GitHub user to squash a pull request.
+If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify will squash the pull request
+itself.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">teams</span></code></p></td>
-<td><p>list of string or dictionary of login and weight</p></td>
-<td></td>
-<td><p>The team name to request reviews from.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">random_count</span></code></p></td>
-<td><p>integer between 1 and 15</p></td>
-<td></td>
-<td><p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div> <div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-success">Essential Plan<br/>Feature 💪</span></a></div>
-Pick random users and teams from the provided lists. When
-<code class="docutils literal notranslate"><span class="pre">random_count</span></code> is specified, <code class="docutils literal notranslate"><span class="pre">users</span></code> and <code class="docutils literal notranslate"><span class="pre">teams</span></code> can be a
-dictionary where the key is the login and the value is the weight to use.
-Weight must be between 1 and 65535 included.</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">commit_message</span></code></p></td>
+<td><p>string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">all-commits</span></code></p></td>
+<td><p>Defines what commit message to use for the squashed commit if not commit
+message is defined in the pull request body (see <a class="reference internal" href="../merge/#commit-message"><span class="std std-ref">Defining the Commit Message</span></a>).
+Possible values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">all-commits</span></code> to use the same format as GitHub squashed merge commit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">first-commit</span></code> to use the message of the first commit of the pull request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">title+body</span></code> means to use the title and body from the pull request
+itself as the commit message. The pull request number will be added to
+end of the title.</p></li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">🔗</a></h2>
-<section id="flexible-reviewers-assignment">
-<h3>👀 Flexible Reviewers Assignment<a class="headerlink" href="#flexible-reviewers-assignment" title="Permalink to this headline">🔗</a></h3>
-<p>You can assign people for review based on any criteria you like. A classic is
-to use the name of modified files to do it:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ask jd to review changes on python files</span>
-    <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">files~=\.py$</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-closed</span>
-    <span class="nt">actions</span><span class="p">:</span>
-      <span class="nt">request_reviews</span><span class="p">:</span>
-        <span class="nt">users</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jd</span>
-</pre></div>
-</div>
-<p>You can also ask entire teams to review a pull request based on, e.g., labels:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ask the security team to review security labelled PR</span>
-    <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">label=security</span>
-    <span class="nt">actions</span><span class="p">:</span>
-      <span class="nt">request_reviews</span><span class="p">:</span>
-        <span class="nt">teams</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="s">&quot;@myorg/security-dev&quot;</span>
-          <span class="p p-Indicator">-</span> <span class="s">&quot;@myorg/security-ops&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="random-review-assignment">
-<h3>👘 Random Review Assignment<a class="headerlink" href="#random-review-assignment" title="Permalink to this headline">🔗</a></h3>
-<p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div>
-<div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-success">Essential Plan<br/>Feature 💪</span></a></div></p>
-<p>It's not fair to ask for the same users or teams to always do the review. You
-can rather randomly assign a pull request to a group of users.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ask the security team to review security labelled PR</span>
-    <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">label=security</span>
-    <span class="nt">actions</span><span class="p">:</span>
-      <span class="nt">request_reviews</span><span class="p">:</span>
-        <span class="nt">users</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jd</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sileht</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">CamClrt</span>
-          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">GuillaumeOj</span>
-      <span class=" -Error"> </span><span class="nt">random_count</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-</pre></div>
-</div>
-<p>In that case, 2 users from this list of 4 users will get a review requested for
-this pull request.</p>
-<p>If you prefer some users to have a larger portion of the pull requests
-assigned, you can add a weight to the user list:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ask the security team to review security labelled PR</span>
-    <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">label=security</span>
-    <span class="nt">actions</span><span class="p">:</span>
-      <span class="nt">request_reviews</span><span class="p">:</span>
-        <span class="nt">users</span><span class="p">:</span>
-          <span class="nt">jd</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-          <span class="nt">sileht</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-          <span class="nt">CamClrt</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-          <span class="nt">GuillaumeOj</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-      <span class="nt">random_count</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-</pre></div>
-</div>
-<p>In that case, it's 3 times more likely then the user <code class="docutils literal notranslate"><span class="pre">sileht</span></code> will get a pull
-request assigned rather than <code class="docutils literal notranslate"><span class="pre">GuillaumeOj</span></code>.</p>
-</section>
 </section>
 </section>
 
@@ -325,7 +252,7 @@ request assigned rather than <code class="docutils literal notranslate"><span cl
         <div>&copy; Copyright 2021, Mergify</div>
     </div>
     <div>
-      <a href="https://github.com/Mergifyio/mergify-engine/tree/main/docs/source/actions/request_reviews.rst"
+      <a href="https://github.com/Mergifyio/mergify-engine/tree/main/docs/source/actions/squash.rst"
          class="btn btn-dark btn-sm active">
         Edit on GitHub <i class="fas fa-external-link-square-alt"></i>
       </a>

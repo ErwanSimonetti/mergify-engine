@@ -144,6 +144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../actions/request_reviews/">request_reviews</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../actions/review/">review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../actions/update/">update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../actions/squash/">squash</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../commands/">⚙️ Commands</a><ul>
@@ -151,6 +152,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../commands/#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../commands/#backport">backport</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../commands/#copy">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../commands/#squash">squash</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../commands/#refresh">refresh</a></li>
 </ul>
 </li>
@@ -314,7 +316,7 @@ backport from <code class="docutils literal notranslate"><span class="pre">main<
 <h2><a class="toc-backref" href="#id12">🎬 Using Labels to Enable/Disable Merge</a><a class="headerlink" href="#using-labels-to-enable-disable-merge" title="Permalink to this headline">🔗</a></h2>
 <p>Some developers are not comfortable with fully automatic merge — they like
 having a final word before merging the code. In that case, you can add a
-condition using a <a class="reference external" href="https://help.github.com/articles/labeling-issues-and-pull-requests/">label</a>:</p>
+condition using a <a class="reference external" href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">label</a>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for main when reviewed and CI passes</span>
     <span class="nt">conditions</span><span class="p">:</span>
@@ -353,7 +355,7 @@ passing.</p>
 <p><div class="feature-tag"><a href="https://mergify.io/pricing" target="_blank"><span class="badge bg-warning">Premium Plan<br/>Feature 🦾</span></a></div></p>
 <p>When <code class="docutils literal notranslate"><span class="pre">smart</span></code> <a class="reference internal" href="../actions/merge/#strict-merge"><span class="std std-ref">Strict Merge</span></a> is enabled and many pull requests are
 waiting to be merged, some of them might be more urgent. In that case, you
-could add a condition using a <a class="reference external" href="https://help.github.com/articles/labeling-issues-and-pull-requests/">label</a> and
+could add a condition using a <a class="reference external" href="https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels">label</a> and
 configure the priority option of <a class="reference internal" href="../actions/merge/#merge-action"><span class="std std-ref">merge</span></a>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge of 🚑 hotfix (high priority)</span>

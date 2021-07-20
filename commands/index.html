@@ -42,7 +42,7 @@
     <link rel="index" title="Index" href="../genindex/" />
     <link rel="search" title="Search" href="../search/" />
     <link rel="next" title="🧪 Example Rules" href="../examples/" />
-    <link rel="prev" title="update" href="../actions/update/" /> 
+    <link rel="prev" title="squash" href="../actions/squash/" /> 
   </head><body>
 <div class="body-container">
   <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white">
@@ -91,8 +91,8 @@
   </ol>
   <div>
     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-      <a href="../actions/update/" title="Previous Chapter: update" class="btn btn-primary" role="button" accesskey="P">
-        &laquo; update
+      <a href="../actions/squash/" title="Previous Chapter: squash" class="btn btn-primary" role="button" accesskey="P">
+        &laquo; squash
       </a>
       <a href="../examples/" title="Next Chapter: 🧪 Example Rules" class="btn btn-primary" role="button" accesskey="N">
         🧪 Example Rules &raquo;
@@ -142,6 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../actions/request_reviews/">request_reviews</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../actions/review/">review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../actions/update/">update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../actions/squash/">squash</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">⚙️ Commands</a><ul>
@@ -149,6 +150,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#update">update</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backport">backport</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#copy">copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#squash">squash</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#refresh">refresh</a></li>
 </ul>
 </li>
@@ -264,6 +266,24 @@ actions.</p>
 </tr>
 <tr class="row-even"><td><p>Example</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&#64;Mergifyio</span> <span class="pre">copy</span> <span class="pre">stable/3.1</span> <span class="pre">stable/4.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="squash">
+<h2>squash<a class="headerlink" href="#squash" title="Permalink to this headline">🔗</a></h2>
+<p>Runs the <a class="reference internal" href="../actions/squash/#squash-action"><span class="std std-ref">squash</span></a> action.</p>
+<table class="colwidths-given docutils align-left">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 88%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Syntax</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;Mergifyio</span> <span class="pre">squash</span> <span class="pre">[&lt;commit_message</span> <span class="pre">format&gt;]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Example</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;Mergifyio</span> <span class="pre">squash</span> <span class="pre">first-commit</span></code></p></td>
 </tr>
 </tbody>
 </table>
