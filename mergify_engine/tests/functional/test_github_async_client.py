@@ -16,6 +16,7 @@
 
 import yaml
 
+from mergify_engine import debug
 from mergify_engine.clients import github
 from mergify_engine.clients import http
 from mergify_engine.tests.functional import base
@@ -39,7 +40,8 @@ class TestGithubClient(base.FunctionalTestBase):
         p2, _ = await self.create_pr()
         await self.create_pr(base=other_branch)
 
-        client = github.aget_client("mergifyio-testing")
+        owner_id = await debug.get_owner_id_from_login("mergifyio-testing")
+        client = github.aget_client(owner_id)
 
         url = f"/repos/mergifyio-testing/{self.RECORD_CONFIG['repository_name']}/pulls"
 

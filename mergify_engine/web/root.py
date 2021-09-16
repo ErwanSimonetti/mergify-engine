@@ -29,6 +29,7 @@ import voluptuous
 from mergify_engine import check_api  # noqa
 from mergify_engine import config
 from mergify_engine import count_seats
+from mergify_engine import debug
 from mergify_engine import github_events
 from mergify_engine import github_types
 from mergify_engine import json
@@ -91,7 +92,11 @@ async def refresh_repo(
         redis.get_redis_stream
     ),
 ) -> responses.Response:
-    async with github.aget_client(owner_name=owner) as client:
+    async with github.aget_client(
+        owner_id=github_types.GitHubAccountIdType(
+            await debug.get_owner_id_from_login(owner)
+        )
+    ) as client:
         try:
             repository = await client.item(f"/repos/{owner}/{repo_name}")
         except http.HTTPNotFound:
@@ -125,7 +130,11 @@ async def refresh_pull(
     ),
 ) -> responses.Response:
     action = RefreshActionSchema(action)
-    async with github.aget_client(owner_name=owner) as client:
+    async with github.aget_client(
+        owner_id=github_types.GitHubAccountIdType(
+            await debug.get_owner_id_from_login(owner)
+        )
+    ) as client:
         try:
             repository = await client.item(f"/repos/{owner}/{repo_name}")
         except http.HTTPNotFound:
@@ -159,7 +168,11 @@ async def refresh_branch(
         redis.get_redis_stream
     ),
 ) -> responses.Response:
-    async with github.aget_client(owner_name=owner) as client:
+    async with github.aget_client(
+        owner_id=github_types.GitHubAccountIdType(
+            await debug.get_owner_id_from_login(owner)
+        )
+    ) as client:
         try:
             repository = await client.item(f"/repos/{owner}/{repo_name}")
         except http.HTTPNotFound:

@@ -24,6 +24,7 @@ from starlette.middleware import cors
 import voluptuous
 
 from mergify_engine import context
+from mergify_engine import debug
 from mergify_engine import exceptions
 from mergify_engine import github_types
 from mergify_engine import rules
@@ -117,7 +118,8 @@ async def _simulator(
         if token:
             auth = github.GithubTokenAuth(token)
         else:
-            auth = github.get_auth(owner)
+            owner_id = await debug.get_owner_id_from_login(owner)
+            auth = github.get_auth(github_types.GitHubAccountIdType(owner_id))
 
         async with github.aget_client(auth=auth) as client:
             try:

@@ -123,12 +123,11 @@ class GithubAppInstallationAuth(httpx.Auth):
 
     def __init__(
         self,
-        owner_name: typing.Optional[github_types.GitHubLogin] = None,
-        owner_id: typing.Optional[github_types.GitHubAccountIdType] = None,
+        owner_id: github_types.GitHubAccountIdType,
     ) -> None:
-        self.owner = owner_name
         self.owner_id = owner_id
 
+        self.owner = None
         self._cached_token: typing.Optional[CachedToken] = None
         self.installation = None
         self.permissions_need_to_be_updated = False
@@ -159,7 +158,6 @@ class GithubAppInstallationAuth(httpx.Auth):
                 if installation_response.status_code == 404:
                     LOG.debug(
                         "Mergify not installed",
-                        gh_owner=self.owner,
                         gh_owner_id=self.owner_id,
                         error_message=installation_response.json()["message"],
                     )
@@ -203,10 +201,7 @@ class GithubAppInstallationAuth(httpx.Auth):
         self, url: typing.Optional[str] = None, force: bool = False
     ) -> httpx.Request:
         if url is None:
-            if self.owner_id:
-                url = f"{config.GITHUB_API_URL}/user/{self.owner_id}/installation"
-            else:
-                url = f"{config.GITHUB_API_URL}/users/{self.owner}/installation"
+            url = f"{config.GITHUB_API_URL}/user/{self.owner_id}/installation"
         return self.build_github_app_request("GET", url, force=force)
 
     def build_access_token_request(self, force: bool = False) -> httpx.Request:
@@ -231,7 +226,6 @@ class GithubAppInstallationAuth(httpx.Auth):
             github_types.GitHubInstallation, installation_response.json()
         )
         self.owner_id = self.installation["account"]["id"]
-        self.owner = self.installation["account"]["login"]
         self.permissions_need_to_be_updated = github_app.permissions_need_to_be_updated(
             self.installation
         )
@@ -287,12 +281,11 @@ _T_get_auth = typing.Union[
 
 
 def get_auth(
-    owner_name: typing.Optional[github_types.GitHubLogin] = None,
     owner_id: typing.Optional[github_types.GitHubAccountIdType] = None,
 ) -> _T_get_auth:
-    if owner_name is None and owner_id is None:
+    if owner_id is None:
         raise ValueError("No owner provided")
-    return GithubAppInstallationAuth(owner_name=owner_name, owner_id=owner_id)
+    return GithubAppInstallationAuth(owner_id=owner_id)
 
 
 def _check_rate_limit(response: httpx.Response) -> None:
@@ -562,10 +555,7 @@ class AsyncGithubInstallationClient(AsyncGithubClient):
 
 
 def aget_client(
-    owner_name: typing.Optional[github_types.GitHubLogin] = None,
     owner_id: typing.Optional[github_types.GitHubAccountIdType] = None,
     auth: typing.Optional[_T_get_auth] = None,
 ) -> AsyncGithubInstallationClient:
-    return AsyncGithubInstallationClient(
-        auth or get_auth(owner_name=owner_name, owner_id=owner_id)
-    )
+    return AsyncGithubInstallationClient(auth or get_auth(owner_id=owner_id))
